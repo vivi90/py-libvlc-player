@@ -8,12 +8,12 @@ class MusicPlayer:
     """Simple LibVLC based music player
 
     :Author: Vivien Richter <vivien-richter@outlook.de>
-    :Version: 1.0.0
+    :Version: 2.0.0
     :License: `Creative Commons Attribution 4.0 International <https://creativecommons.org/licenses/by/4.0>`_
     :Repository: `GitHub <https://github.com/vivi90/py-libvlc-player.git>`_
     """
 
-    def __init__(self, mrls: tuple[str, ...] = None, options: str = "", trackChangedEventCallback: Callable[[str, str, str, str, str], None] = None, positionChangedEventCallback: Callable[[str], None] = None) -> None:
+    def __init__(self, mrls: tuple[str, ...] = None, options: str = "", trackChangedEventCallback: Callable[[str, str, str, str, str], None] = None, positionChangedEventCallback: Callable[[float], None] = None) -> None:
         """Constructor
 
         :param mrls: Media ressource locators
@@ -113,7 +113,7 @@ def onTrackChanged(title: str, artist: str, description: str, URL: str, artURL: 
     print(artURL)
     print(URL)
 
-def onPositionChanged(currentPosition: str) -> None:
+def onPositionChanged(currentPosition: float) -> None:
     '''Print current position'''
     print(
         str(timedelta(
